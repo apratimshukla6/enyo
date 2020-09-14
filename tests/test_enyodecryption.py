@@ -1,4 +1,4 @@
-from enyo.enyoencryption import EnyoDecryption
+from enyo.enyodecryption import EnyoDecryption
 
 # Third parameter is optional partition (by default 2)
 test = EnyoDecryption("SQpaSN","secretkey")

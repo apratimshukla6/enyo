@@ -20,7 +20,7 @@ print(test.encrypted)
 
 ## To decrypt:
 ```python
-from enyo.enyoencryption import EnyoDecryption
+from enyo.enyodecryption import EnyoDecryption
 # Third parameter is optional partition (by default 2)
 test = EnyoDecryption("SQpaSN","secretkey")
 # To print the decrypted text
