@@ -14,8 +14,8 @@ class EnyoDecryption:
         self.decrypted = self.decode(self.decryption()) # Multistage XOR Decryption + Decoding 
         
     def encode(self,str):
-        bits = ""
         encodedWord = ""
+        bits = ""
         # Converting the ascii characters to binary
         for i in str:
             bits += format(ord(i),'08b')
@@ -28,8 +28,8 @@ class EnyoDecryption:
         return encodedWord
     
     def decode(self,str):
-        decodedWord = ""
         bits = ""
+        decodedWord = ""
         # Converting the ASCII values to fit in our character set.
         for i in str:
             if(ord(i)>64 and ord(i)<91):
@@ -127,8 +127,8 @@ class EnyoDecryption:
 
     def transpositionDecryption(self,encrypt):
         decrypted = ""
-        size = self.findMatrixSize(encrypt) #Dimension of transposition matrix
         matrix = []
+        size = self.findMatrixSize(encrypt) #Dimension of transposition matrix
         # Initializing matrix
         for i in range(size):
             temp = []
@@ -156,8 +156,8 @@ class EnyoDecryption:
         return encrypt
 
     def decryption(self):
-        index = 0
         decrypted = ""
+        index = 0
         for i in range(len(self.encrypted)):
             x = self.newCharSet[self.encrypted[i]]
             j = len(self.key)-1 
