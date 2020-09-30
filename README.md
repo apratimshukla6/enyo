@@ -1,3 +1,5 @@
+[![PyPI version](https://badge.fury.io/py/enyo.svg)](https://badge.fury.io/py/enyo) [![Downloads](https://pepy.tech/badge/enyo)](https://pepy.tech/project/enyo) [![Downloads](https://pepy.tech/badge/enyo/week)](https://pepy.tech/project/enyo/week) [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+
 Enyo is a lightweight multistage partition based encryption algorithm
 
 # Description
