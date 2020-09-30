@@ -43,9 +43,8 @@ class EnyoEncryption:
         total = 0
         for i in encodedKey:
             total = total + self.charSet[i]
-        # Shifts the sets by sum modulus 16 and xors the result back with the total 
+        # Shifts the sets by sum modulus 16 
         shifter = total%16
-        shifter = shifter ^ total
         # Shifting both character sets by shifter
         newCharSet = {}
         newNumSet = {}
