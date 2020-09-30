@@ -1,3 +1,4 @@
+import math
 class EnyoEncryption:
     numSet = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E', 5: 'F', 6: 'G', 7: 'H', 8: 'I', 9: 'J', 10: 'K', 11: 'L', 12: 'M', 13: 'N', 14: 'O', 15: 'P', 16: 'Q', 17: 'R', 18: 'S', 19: 'T', 20: 'U', 21: 'V', 22: 'W', 23: 'X', 24: 'Y', 25: 'Z', 26: 'a', 27: 'b', 28: 'c', 29: 'd', 30: 'e', 31: 'f', 32: 'g', 33: 'h', 34: 'i', 35: 'j', 36: 'k', 37: 'l', 38: 'm', 39: 'n', 40: 'o', 41: 'p', 42: 'q', 43: 'r', 44: 's', 45: 't', 46: 'u', 47: 'v', 48: 'w', 49: 'x', 50: 'y', 51: 'z', 52: '0', 53: '1', 54: '2', 55: '3', 56: '4', 57: '5', 58: '6', 59: '7', 60: '8', 61: '9', 62:'$',63:'@'}
 
@@ -11,8 +12,8 @@ class EnyoEncryption:
         self.ekey = self.keyPartioning(self.encode(self.secret),self.part) # Partition based encoded secret key
         self.newCharSet, self.newNumSet = self.charSetModifier(self.ekey) # Modified character sets
         self.key = self.partition(self.ekey,self.part) # Final secret key array for encryption
-        self.encrypted = self.moduloEncryption(self.encryption()) # Multistage XOR + Modular Encryption
-        
+        self.encrypted = self.transpositionEncryption(self.moduloEncryption(self.encryption())) # Multistage XOR + Modular Encryption + Transposition
+
     def encode(self,str):
         bits = ""
         encodedWord = ""
@@ -85,7 +86,64 @@ class EnyoEncryption:
             raise Exception("Number of partitions not possible.")
         else:
             return part
-        
+    
+    def findMatrixSize(self,encrypt):
+    	size = math.sqrt(len(encrypt))
+    	return min(int(size),len(self.key[0]))
+
+    def sequenceGenerator(self,key):
+	    initialSequence = []
+	    for i in range(0,len(key)):
+	        initialSequence.append([self.newCharSet[key[i]]])
+	    rank = 0
+	    while(True):
+	        flag = 0
+	        minimum = 64 # Values can't be greater than 63 in initialSequence
+	        for i in range(0,len(initialSequence)):
+	            if(initialSequence[i][0]<minimum and len(initialSequence[i])!=2):
+	                minimum = initialSequence[i][0]
+	                position = i
+	        initialSequence[position].append(rank)
+	        rank += 1
+	        for i in range(0,len(initialSequence)):
+	            if(len(initialSequence[i])!=2):
+	                flag += 1
+	        if(flag==0):
+	            break
+	    finalSequence = []
+	    for i in range(0,len(initialSequence)):
+	        finalSequence.append(initialSequence[i][1])
+	    return finalSequence
+
+    def transpositionEncryption(self,encrypt):
+    	encrypted = ""
+    	size = self.findMatrixSize(encrypt) #Dimension of transposition matrix
+    	matrix = []
+    	# Initializing matrix
+    	for i in range(size):
+    		temp = []
+    		for j in range(size):
+    			temp.append('0')
+    		matrix.append(temp)
+
+
+    	for keyPart in self.key:
+    		keyWindow = keyPart[0:size]
+    		sequence = self.sequenceGenerator(keyWindow)
+    		for i in range(len(encrypt)-size*size+1):
+    			window = encrypt[i:size*size+i]
+    			x = 0
+    			for j in range(size):
+    				for k in range(size):
+    					matrix[j][k] = window[x]
+    					x += 1
+    			for t in sequence:
+    				for tt in range(size):
+    					encrypted += matrix[tt][t]
+    			encrypt = encrypt[0:i]+encrypted+encrypt[size*size+i:]
+    			encrypted = ""
+    	return encrypt
+
     def encryption(self):
         # Encryption function
         index = 0
@@ -112,5 +170,3 @@ class EnyoEncryption:
             if(index>len(self.key[0])-1):
                 index = 0
         return encrypted
-    
-    
