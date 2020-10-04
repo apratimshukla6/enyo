@@ -14,8 +14,8 @@ It consists of two main modules:
 ## To encrypt:
 ```python
 from enyo.enyoencryption import EnyoEncryption
-# Third parameter is optional partition (by default 2)
-test = EnyoEncryption("test","secretkey")
+# Third parameter is optional partition (by default 2), Fourth parameter is optional boolean transposition (default False)
+test = EnyoEncryption("test","secretkey",partition=2,transposition=True)
 # To print the encrypted text
 print(test.encrypted)
 ```
@@ -23,8 +23,8 @@ print(test.encrypted)
 ## To decrypt:
 ```python
 from enyo.enyodecryption import EnyoDecryption
-# Third parameter is optional partition (by default 2)
-test = EnyoDecryption("SaSQpN","secretkey")
+# Third parameter is optional partition (by default 2), Fourth parameter is optional boolean transposition (default False)
+test = EnyoDecryption("SaSQpN","secretkey",partition=2,transposition=True)
 # To print the decrypted text
 print(test.decrypted)
 ```
