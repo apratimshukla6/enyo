@@ -9,7 +9,7 @@ class EnyoEncryption:
         self.secret = secret # Secret key for encryption
         self.part = self.partitionChecker(partition)
         self.etext = self.encode(self.text)
-        self.ekey = self.keyPartioning(self.encode(self.secret),self.part) # Partition based encoded secret key
+        self.ekey = self.keyPartitioning(self.encode(self.secret),self.part) # Partition based encoded secret key
         self.newCharSet, self.newNumSet = self.charSetModifier(self.ekey) # Modified character sets
         self.key = self.partition(self.ekey,self.part) # Final secret key array for encryption
         if(transposition):
@@ -71,7 +71,7 @@ class EnyoEncryption:
             encrypted += self.numSet[int(bits,2)]
         return encrypted
 
-    def keyPartioning(self,encodedKey,part):
+    def keyPartitioning(self,encodedKey,part):
         i = len(encodedKey)%part
         while(len(encodedKey)%part!=0):
             encodedKey = encodedKey+encodedKey[i]
