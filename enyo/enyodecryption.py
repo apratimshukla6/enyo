@@ -186,4 +186,5 @@ class EnyoDecryption:
             index += 1
             if(index>len(self.key[0])-1):
                 index = 0
+        decrypted = decrypted[:len(decrypted)-1]
         return decrypted
