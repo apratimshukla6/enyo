@@ -1,5 +1,9 @@
 # Change log
 
+## [0.0.9] - 2020-10-01
+- Updated README
+- Reverted Fix
+
 ## [0.0.8] - 2020-10-01
 - Updated README
 - Minor Bug Fix

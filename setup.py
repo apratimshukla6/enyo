@@ -8,7 +8,7 @@ with open('HISTORY.md') as history_file:
 
 setup_args = dict(
     name='enyo',
-    version='0.0.8',
+    version='0.0.9',
     description='Enyo is a lightweight multistage partition based encryption algorithm.',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n' + HISTORY,
