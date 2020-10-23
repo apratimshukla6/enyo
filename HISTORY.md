@@ -1,5 +1,9 @@
 # Change log
 
+## [0.1.0] - 2020-10-24
+- Updated README
+- Null Character in Decryption Fix
+
 ## [0.0.9] - 2020-10-01
 - Updated README
 - Reverted Fix
