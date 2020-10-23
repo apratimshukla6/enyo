@@ -42,7 +42,8 @@ class EnyoDecryption:
             else:
                 bits+=format(ord(i)+4,'06b')
         for i in range(0,len(bits),8):
-            decodedWord = decodedWord+chr(int(bits[i:i+8],2))
+            if (i/8!=len(bits)//8):
+                decodedWord = decodedWord+chr(int(bits[i:i+8],2))
         return decodedWord
     
     def binarySwap(self,str):
