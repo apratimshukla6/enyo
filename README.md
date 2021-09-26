@@ -93,7 +93,7 @@ The issue tracker is only for bug reports and enhancement suggestions. If you ha
 
 If you wish to contribute to the Enyo codebase or documentation, feel free to fork the repository and submit a pull request.
 
-## Help
+## Help !
 
 If you don't understand something in the documentation, you are experiencing problems, or you just need a gentle
 nudge in the right direction, please don't hesitate to join our [Discord Server](https://discord.gg/aMgWPApkyS).
