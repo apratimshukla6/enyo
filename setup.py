@@ -8,8 +8,8 @@ with open('HISTORY.md') as history_file:
 
 setup_args = dict(
     name='enyo',
-    version='0.1.0',
-    description='Enyo is a lightweight multistage partition based encryption algorithm.',
+    version='0.1.1',
+    description='Enyo is a lightweight multistage partition-based encryption algorithm. Enyo cipher demonstrates good resistance to a brute-force attack. It is well suited for small-scale applications where the computational power is a bottleneck.',
     long_description_content_type="text/markdown",
     long_description=README + '\n\n' + HISTORY,
     license='MIT',
